@@ -35,17 +35,17 @@ public sealed class EquippingItems : UpdateSystem {
                 if (hasEquipment)
                 {
                     var comp = e.GetComponent<ActiveEquipment>();
-                    if (comp.inventoryIdx == req.idx)
-                        continue;
-                    else
-                        Destroy(comp.gameObject);
+                    //if (comp.inventoryIdx == req.idx)
+                    //    continue;
+                    //else
+                    //    Destroy(comp.gameObject);
                 }
                 else
                     e.AddComponent<ActiveEquipment>();
 
                 ref var actorComp = ref e.GetComponent<ActorComponent>();
                 ref var eqComp = ref e.GetComponent<ActiveEquipment>();
-                eqComp.inventoryIdx = req.idx;
+                //eqComp.inventoryIdx = req.idx;
                 Equip(itemEntry, actorComp, out eqComp.equippedId, out eqComp.gameObject);
             }
         }

@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: 13f05a82633a15c48badb6edd758cc36, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -185,8 +185,8 @@ GameObject:
   - component: {fileID: 8819689895566479307}
   - component: {fileID: 6461388996696664061}
   - component: {fileID: 3107546673308750404}
-  - component: {fileID: 2527296185646800621}
   - component: {fileID: 3597951128387492086}
+  - component: {fileID: 202436621818752497}
   m_Layer: 7
   m_Name: TestSoldier
   m_TagString: Untagged
@@ -202,7 +202,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7193201995071429587}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.4, y: 0.4, z: -15.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -297,15 +297,15 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7193201995071429587}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e2626d9330c46b488bcc33826725d34, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializedData:
-    maxHp: 0
+    maxHp: 50
     hp: 0
-    regen: 0
+    regen: 0.08
 --- !u!114 &3107546673308750404
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -321,19 +321,6 @@ MonoBehaviour:
   serializedData:
     direction: {x: 0, y: 0}
     speed: 20
---- !u!114 &2527296185646800621
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7193201995071429587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c91c0439fcc45d844aab1820e5a0d3dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _initialItems: 
 --- !u!114 &3597951128387492086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,6 +335,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedData:
     targetZone: {fileID: 0}
+--- !u!114 &202436621818752497
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193201995071429587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e0b55d6ac060ea743b9112ad8d421229, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _equipmentPrefab: {fileID: 7005638240070314592, guid: 0b3262bacde298a48a63bec853493b9c,
+    type: 3}
+  _equipmentLocation: {fileID: 1009466108874607816}
 --- !u!1 &8645153153438373236
 GameObject:
   m_ObjectHideFlags: 0

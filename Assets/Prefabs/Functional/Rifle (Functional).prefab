@@ -147,8 +147,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7091725227269281443}
-  - component: {fileID: 7037215919211518823}
   - component: {fileID: 3817349469389029868}
+  - component: {fileID: 3932809754496199039}
   m_Layer: 0
   m_Name: Rifle (Functional)
   m_TagString: Untagged
@@ -173,18 +173,6 @@ Transform:
   - {fileID: 5729735818480552191}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &7037215919211518823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7005638240070314592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89df455a144f1c44f8e021e857255569, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &3817349469389029868
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -201,3 +189,16 @@ MonoBehaviour:
     spawnPoint: {fileID: 5729735818480552191}
     bulletMarkPrefab: {fileID: 252254243357967028, guid: 131465a72e3b354439b91d96693074ac,
       type: 3}
+--- !u!114 &3932809754496199039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7005638240070314592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0c065806cdd7a1448f9dcac053a6d0b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _config: {fileID: 11400000, guid: 06316dec58a7cd34e8d697d6055d80e4, type: 2}
