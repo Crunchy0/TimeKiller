@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8483704761995924100
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2812204248872048023}
+  - component: {fileID: 5589083999184116684}
+  - component: {fileID: 8161541121650035551}
+  m_Layer: 0
+  m_Name: Root Initializer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2812204248872048023
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483704761995924100}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5589083999184116684
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483704761995924100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c1634a314878a624eb6251c9adff8e97, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentReference:
+    TypeName: 
+  autoRun: 1
+  autoInjectGameObjects: []
+  _configBase: {fileID: 8161541121650035551}
+--- !u!114 &8161541121650035551
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8483704761995924100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8c64f29050c919b4f9f5423201e0dba5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _camConfig: {fileID: 11400000, guid: d60f8a079884d0247b6ca1ba85daa238, type: 2}
+  _rifleItemConfig: {fileID: 11400000, guid: 3fa7ceb5dfad91c4d95a008c9dd4cd49, type: 2}
+  _shotgunItemConfig: {fileID: 11400000, guid: 418d67a25b4955640bb134cfd9bac510, type: 2}
+  _rifleConfig: {fileID: 11400000, guid: 06316dec58a7cd34e8d697d6055d80e4, type: 2}
+  _shotgunConfig: {fileID: 11400000, guid: 965d53693e879d44bb56e91b8ef23d80, type: 2}
+  _humanPrefab: {fileID: 7193201995071429587, guid: 85a05b5c8014ad345aacf587bf72b095,
+    type: 3}
+  _monsterPrefab: {fileID: 8087448856805712590, guid: bfb0a78d2e3ce56449b7acedf227edd6,
+    type: 3}
