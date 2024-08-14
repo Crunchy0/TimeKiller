@@ -8,4 +8,9 @@ using Unity.IL2CPP.CompilerServices;
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 public struct GunComponent : IComponent {
     public GunConfig config;
+    public int ammoLeft;
+    public bool isAutoEnabled;
+    public bool isTriggerPulled;
+    public bool shotOnce;
+    public float lastShotTime;
 }

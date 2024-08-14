@@ -63,8 +63,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _camConfig: {fileID: 11400000, guid: d60f8a079884d0247b6ca1ba85daa238, type: 2}
-  _rifleItemConfig: {fileID: 11400000, guid: 3fa7ceb5dfad91c4d95a008c9dd4cd49, type: 2}
-  _shotgunItemConfig: {fileID: 11400000, guid: 418d67a25b4955640bb134cfd9bac510, type: 2}
   _rifleConfig: {fileID: 11400000, guid: 06316dec58a7cd34e8d697d6055d80e4, type: 2}
   _shotgunConfig: {fileID: 11400000, guid: 965d53693e879d44bb56e91b8ef23d80, type: 2}
   _humanPrefab: {fileID: 7193201995071429587, guid: 85a05b5c8014ad345aacf587bf72b095,

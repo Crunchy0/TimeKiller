@@ -25,7 +25,6 @@ public sealed class CharacterPickerProvider : EntityProvider {
         ref var activeEqComp = ref Entity.AddComponent<ActiveEquipment>();
         activeEqComp.equippedId = Entity.ID;
         activeEqComp.gameObject = gameObject;
-        activeEqComp.inventoryIdx = -1;
     }
 
     private void SendPickEvent(World world)

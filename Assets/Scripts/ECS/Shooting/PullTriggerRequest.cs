@@ -1,5 +1,5 @@
 using Scellecs.Morpeh;
-public struct PullGunTrigger : IRequestData
+public struct PullTriggerRequest : IRequestData
 {
     public EntityId entityId;
     public bool isPulled;
