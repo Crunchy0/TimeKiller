@@ -15,18 +15,20 @@ public sealed class CharacterAttachmentSystem : UpdateSystem {
     PlayerControlledEntity _servInfo;
     Event<PickCharacterEvent> _pickEvt;
     Event<AttachedToCharacterEvent> _attachEvt;
+    Event<PrimaryActionEvent> _primEvt;
 
     public override void OnAwake()
     {
         _pickEvt = World.GetEvent<PickCharacterEvent>();
         _attachEvt = World.GetEvent<AttachedToCharacterEvent>();
+        _primEvt = World.GetEvent<PrimaryActionEvent>();
     }
 
     public override void OnUpdate(float deltaTime)
     {
         if (_controls.Interactions.DetachFromEntity.WasReleasedThisFrame())
         {
-            _servInfo.ResetServant();
+            _servInfo.TakeControl();
             _attachEvt.NextFrame(new AttachedToCharacterEvent
             {
                 controlledId = _servInfo.ControlledId,
@@ -44,7 +46,7 @@ public sealed class CharacterAttachmentSystem : UpdateSystem {
         // What if rigidbody is not on the entitie'd game object? Try finding in parent?
         var gameObject = hit.rigidbody.gameObject;
 
-        _servInfo.ResetServant(gameObject);
+        _servInfo.TakeControl(gameObject);
         _attachEvt.NextFrame(new AttachedToCharacterEvent
         {
             controlledId = _servInfo.ControlledId,

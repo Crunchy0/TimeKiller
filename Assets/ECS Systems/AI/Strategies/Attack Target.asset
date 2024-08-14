@@ -9,6 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6973a3f7823f36643aa1f51a37355913, type: 3}
-  m_Name: Pursue Target System
+  m_Script: {fileID: 11500000, guid: f162deb10468d8b4e90f477bf32c73ba, type: 3}
+  m_Name: Attack Target
   m_EditorClassIdentifier: 

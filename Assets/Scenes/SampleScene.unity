@@ -488,6 +488,31 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1342834560262264113, guid: bfb0a78d2e3ce56449b7acedf227edd6,
+        type: 3}
+      propertyPath: serializedData.fov.x
+      value: 160
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342834560262264113, guid: bfb0a78d2e3ce56449b7acedf227edd6,
+        type: 3}
+      propertyPath: serializedData.fov.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342834560262264113, guid: bfb0a78d2e3ce56449b7acedf227edd6,
+        type: 3}
+      propertyPath: serializedData.forgetTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1342834560262264113, guid: bfb0a78d2e3ce56449b7acedf227edd6,
+        type: 3}
+      propertyPath: serializedData.sightDistance
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808309086697614142, guid: bfb0a78d2e3ce56449b7acedf227edd6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2164000167951085048, guid: bfb0a78d2e3ce56449b7acedf227edd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1549,19 +1574,31 @@ MonoBehaviour:
   - enabled: 1
     system: {fileID: 11400000, guid: 39d6a02b568c36a49974eae7814c8f09, type: 2}
   - enabled: 1
-    system: {fileID: 11400000, guid: 8024162a6f63ed148b12a7d22613f1ee, type: 2}
-  - enabled: 1
     system: {fileID: 11400000, guid: c4fa8f97a85709c4584903d62d4cde60, type: 2}
   - enabled: 1
     system: {fileID: 11400000, guid: bf132abc7f1def3489ae6935dd25b95c, type: 2}
   - enabled: 1
+    system: {fileID: 11400000, guid: 2db6b2f1b3e795c4389df233ce3d2ade, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: 4a755957c0e25cc4dab8d989261dd530, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: 95af28f3a4e5dbb46b9e187adfd7cc59, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: d27e9f8e38b278743b14a27c081a9dad, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: 8b2103ea5c2a22a43a1c900f3022a280, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: 7a0a12b70b757d4499a433bfe58f76fd, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: b17d9655dd8b7bf4db1f130dc719c248, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: ea63f411adc60b743a00f5dea0375890, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: 37ab7fd4835307a458a85ce590155f5f, type: 2}
+  - enabled: 1
+    system: {fileID: 11400000, guid: 8024162a6f63ed148b12a7d22613f1ee, type: 2}
+  - enabled: 1
     system: {fileID: 11400000, guid: 04724acb640df7548bd3fdbb867b5c02, type: 2}
-  - enabled: 1
-    system: {fileID: 11400000, guid: df52b4a0284eb914197dd0615f96fc14, type: 2}
-  - enabled: 1
-    system: {fileID: 11400000, guid: 5dcb876192cc49c4ab89c1bd1192c7f1, type: 2}
-  - enabled: 1
-    system: {fileID: 11400000, guid: 6f5e6a4028b1c4948abd4d237fbb68e6, type: 2}
   - enabled: 1
     system: {fileID: 11400000, guid: 4fd404ccf06da87499b0088d3b2a2446, type: 2}
   - enabled: 1
@@ -2601,11 +2638,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 202436621818752497, guid: 85a05b5c8014ad345aacf587bf72b095,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5920589667256189663, guid: 85a05b5c8014ad345aacf587bf72b095,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2660,6 +2692,26 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Soldier
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907113512155733533, guid: 85a05b5c8014ad345aacf587bf72b095,
+        type: 3}
+      propertyPath: serializedData.fov.x
+      value: 140
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907113512155733533, guid: 85a05b5c8014ad345aacf587bf72b095,
+        type: 3}
+      propertyPath: serializedData.fov.y
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907113512155733533, guid: 85a05b5c8014ad345aacf587bf72b095,
+        type: 3}
+      propertyPath: serializedData.forgetTime
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907113512155733533, guid: 85a05b5c8014ad345aacf587bf72b095,
+        type: 3}
+      propertyPath: serializedData.sightDistance
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

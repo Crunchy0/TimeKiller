@@ -66,9 +66,13 @@ public sealed class AiMovementSystem : UpdateSystem {
             movement.direction.x = resultDir.x;
             movement.direction.y = resultDir.z;
 
-            Debug.DrawLine(body.transform.position, body.transform.position + 3*resultDir, Color.white);
-            Debug.DrawLine(body.transform.position, moveTo, Color.cyan);
-            Debug.DrawLine(body.transform.position, body.transform.position + body.rigidbody.velocity, Color.yellow);
+            //Debug.DrawLine(body.transform.position, body.transform.position + 3*resultDir, Color.white);
+            //Debug.DrawLine(body.transform.position, moveTo, Color.cyan);
+            //Debug.DrawLine(body.transform.position, body.transform.position + body.rigidbody.velocity, Color.yellow);
+            for(int k = 0; k < agent.path.Length - 1; k++)
+            {
+                Debug.DrawLine(agent.path[k], agent.path[k + 1], Color.red);
+            }
 
             if ((moveTo - body.transform.position).magnitude < 1f)
             {

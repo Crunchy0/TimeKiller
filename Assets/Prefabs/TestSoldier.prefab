@@ -187,6 +187,7 @@ GameObject:
   - component: {fileID: 3107546673308750404}
   - component: {fileID: 3597951128387492086}
   - component: {fileID: 202436621818752497}
+  - component: {fileID: 8907113512155733533}
   m_Layer: 7
   m_Name: TestSoldier
   m_TagString: Untagged
@@ -286,7 +287,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedData:
     currentZone: {fileID: 0}
-    target: {x: 0, y: 0, z: 0}
+    lookTarget: {x: 0, y: 0, z: 0}
     equipmentLocation: {fileID: 1009466108874607816}
     eye: {fileID: 79855116894309673}
     config: {fileID: 11400000, guid: d845b61c44f86d64a8eeb43da24927b3, type: 2}
@@ -350,6 +351,25 @@ MonoBehaviour:
   _equipmentPrefab: {fileID: 7005638240070314592, guid: 0b3262bacde298a48a63bec853493b9c,
     type: 3}
   _equipmentLocation: {fileID: 1009466108874607816}
+--- !u!114 &8907113512155733533
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193201995071429587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f2979e1229a876419d482666f050960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedData:
+    sightDistance: 0
+    fov: {x: 0, y: 0}
+    forgetTime: 0
+    transform: {fileID: 0}
+    lastTimeSeen: 0
+    isInSight: 0
 --- !u!1 &8645153153438373236
 GameObject:
   m_ObjectHideFlags: 0

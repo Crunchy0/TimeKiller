@@ -22,7 +22,7 @@ public class PlayerControlledEntity
         ControlledId = _characterPickerId;
     }
 
-    public void ResetServant(GameObject gameObject = null)
+    public void TakeControl(GameObject gameObject = null)
     {
         EntityProvider provider = null;
         bool defaultServant = gameObject == null || !gameObject.TryGetComponent(out provider);

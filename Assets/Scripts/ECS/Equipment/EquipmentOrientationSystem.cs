@@ -21,7 +21,7 @@ public sealed class EquipmentOrientationSystem : UpdateSystem {
             var activeEqComp = e.GetComponent<ActiveEquipment>();
 
             Transform eqTf = activeEqComp.gameObject.transform;
-            Vector3 direction = actorComp.target - eqTf.position;
+            Vector3 direction = actorComp.lookTarget - eqTf.position;
             Vector3 proj = Vector3.ProjectOnPlane(direction, Vector3.up);
             float angle = Vector3.Angle(proj, direction) * (direction.y > proj.y ? -1 : 1);
             //float angle = Vector3.SignedAngle(actorComp.target, eqTf.position, Vector3.up);

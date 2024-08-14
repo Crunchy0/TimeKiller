@@ -293,6 +293,7 @@ GameObject:
   - component: {fileID: 8184270240985061819}
   - component: {fileID: 1317051838106539105}
   - component: {fileID: 1808309086697614142}
+  - component: {fileID: 1342834560262264113}
   m_Layer: 7
   m_Name: TestMonster
   m_TagString: Untagged
@@ -392,7 +393,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedData:
     currentZone: {fileID: 0}
-    target: {x: 0, y: 0, z: 0}
+    lookTarget: {x: 0, y: 0, z: 0}
     equipmentLocation: {fileID: 8495511130429399553}
     eye: {fileID: 1686377461345648794}
     config: {fileID: 11400000, guid: 7b721a48ec80790458cb29b58eca275d, type: 2}
@@ -456,3 +457,22 @@ MonoBehaviour:
   _equipmentPrefab: {fileID: 7005638240070314592, guid: 0b3262bacde298a48a63bec853493b9c,
     type: 3}
   _equipmentLocation: {fileID: 8495511130429399553}
+--- !u!114 &1342834560262264113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8087448856805712590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f2979e1229a876419d482666f050960, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedData:
+    sightDistance: 0
+    fov: {x: 0, y: 0}
+    forgetTime: 0
+    transform: {fileID: 0}
+    lastTimeSeen: 0
+    isInSight: 0

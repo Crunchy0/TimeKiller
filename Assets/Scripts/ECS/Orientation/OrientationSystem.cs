@@ -20,7 +20,7 @@ public sealed class OrientationSystem : UpdateSystem {
             var bodyComp = e.GetComponent<BodyComponent>();
             var actorComp = e.GetComponent<ActorComponent>();
 
-            Vector3 targetPoint = actorComp.target;
+            Vector3 targetPoint = actorComp.lookTarget;
             targetPoint.y = bodyComp.transform.position.y;
 
             bodyComp.transform.LookAt(targetPoint);

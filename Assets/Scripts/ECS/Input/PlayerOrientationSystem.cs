@@ -24,7 +24,7 @@ public sealed class PlayerOrientationSystem : UpdateSystem {
             return;
 
         ref var actorComp = ref e.GetComponent<ActorComponent>();
-        actorComp.target = _targInfo.CrosshairTargPos;
+        actorComp.lookTarget = _targInfo.CrosshairTargPos;
     }
 
     [Inject]
