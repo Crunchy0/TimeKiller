@@ -30,7 +30,7 @@ public class GunProvider : EntityProvider {
     protected sealed override void Deinitialize()
     {
         Entity.RemoveComponent<GunComponent>();
-        Entity.RemoveComponent<EquipmentState>();
+        Entity.RemoveComponent<Equipment>();
     }
 
     private void MainAttackStart(World world)
