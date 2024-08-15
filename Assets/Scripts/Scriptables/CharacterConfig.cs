@@ -18,9 +18,6 @@ public class CharacterConfig : ScriptableObject
     public float Regen { get => _regeneration; }
 
     public float MovSpeed { get => _movementSpeed; }
-    public float SightRange { get => _sightRange; }
-    public Vector2 Fov { get => _fov; }
-    public float LostTargetPursuitDuration { get => _lostTargetPursuitDuration; }
     public float ExplorationPenchant { get => _explorationPenchant; }
 
     public float AttackRange { get => _attackRange; }
@@ -36,9 +33,6 @@ public class CharacterConfig : ScriptableObject
 
     [Header("Navigation")]
     [SerializeField] private float _movementSpeed;
-    [SerializeField] [Min(0f)] private float _sightRange;
-    [SerializeField] private Vector2 _fov;
-    [SerializeField] [Min(0.2f)] private float _lostTargetPursuitDuration;
     [SerializeField] [Range(0f, 1f)] private float _explorationPenchant;
 
     [Header("Combat")]

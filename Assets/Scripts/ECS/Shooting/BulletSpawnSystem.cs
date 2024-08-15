@@ -1,4 +1,3 @@
-using Scellecs.Morpeh.Systems;
 using Scellecs.Morpeh;
 using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
@@ -6,8 +5,8 @@ using Unity.IL2CPP.CompilerServices;
 [Il2CppSetOption(Option.NullChecks, false)]
 [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-[CreateAssetMenu(menuName = "ECS/Systems/" + nameof(BulletSpawnSystem))]
-public sealed class BulletSpawnSystem : UpdateSystem {
+public sealed class BulletSpawnSystem : CustomUpdateSystem
+{
     private Request<SpawnBulletRequest> _spawnBulletRequest;
 
     public override void OnAwake() {
@@ -35,7 +34,8 @@ public sealed class BulletSpawnSystem : UpdateSystem {
         {
             //Debug.Log($"Bullet hit some surface at {hit.point}");
             Quaternion rot = Quaternion.FromToRotation(bsComp.bulletMarkPrefab.transform.up, hit.normal);
-            var gameObject = Instantiate(bsComp.bulletMarkPrefab, hit.point + hit.normal*0.01f, rot);
+            
+            var gameObject = GameObject.Instantiate(bsComp.bulletMarkPrefab, hit.point + hit.normal*0.01f, rot);
             gameObject.transform.SetParent(hit.transform);
         }
     }

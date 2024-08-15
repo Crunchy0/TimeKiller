@@ -1,16 +1,15 @@
-using Scellecs.Morpeh.Systems;
 using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
-using VContainer;
 
 [Il2CppSetOption(Option.NullChecks, false)]
 [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-[CreateAssetMenu(menuName = "ECS/Systems/" + nameof(CameraCachingSystem))]
-public sealed class CameraCachingSystem : UpdateSystem {
+public sealed class CameraCachingSystem : CustomUpdateSystem {
     CameraController _camController;
     float _cachingInterval;
     float _lastCachingTime;
+
+    public CameraCachingSystem(CameraController camController) => _camController = camController;
 
     public override void OnAwake() {
         _cachingInterval = 1;
@@ -24,11 +23,5 @@ public sealed class CameraCachingSystem : UpdateSystem {
 
         _camController.CacheCurrentState();
         _lastCachingTime = currentTime;
-    }
-
-    [Inject]
-    private void InjectDependencies(CameraController camController)
-    {
-        _camController = camController;
     }
 }

@@ -43,7 +43,10 @@ public sealed class AiAgentProvider : MonoProvider<AiAgentComponent> {
         ref var agentComp = ref GetData();
         
         if ((agentComp.destination - bodyComp.transform.position).magnitude < 2f)
-            return;
+        {
+            agentComp.path = new Vector3[0];
+            agentComp.pathNodeIdx = -1;
+        }
 
         NavMeshPath path = new();
         bool isPathExist = NavMesh.CalculatePath(bodyComp.transform.position, agentComp.destination, NavMesh.AllAreas, path);
