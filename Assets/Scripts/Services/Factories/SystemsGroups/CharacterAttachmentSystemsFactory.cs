@@ -21,7 +21,8 @@ public class CharacterAttachmentSystemsFactory : ISystemsGroupFactory
     {
         List<ISystem> systems = new List<ISystem>
         {
-            new CharacterAttachmentSystem(_controls, _controlled, _camMonitor)
+            new CharacterAttachmentSystem(_controls, _controlled, _camMonitor),
+            new PrepareControlledNpcSystem()
         };
 
         var group = world.CreateSystemsGroup();
