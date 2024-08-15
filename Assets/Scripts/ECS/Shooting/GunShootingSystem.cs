@@ -1,4 +1,3 @@
-using Scellecs.Morpeh.Systems;
 using Scellecs.Morpeh;
 using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
@@ -6,8 +5,7 @@ using Unity.IL2CPP.CompilerServices;
 [Il2CppSetOption(Option.NullChecks, false)]
 [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-[CreateAssetMenu(menuName = "ECS/Systems/" + nameof(GunShootingSystem))]
-public sealed class GunShootingSystem : UpdateSystem
+public sealed class GunShootingSystem : CustomUpdateSystem
 {
     private Request<SpawnBulletRequest> _spawnBulletRequest;
     private Filter _gunFilter;

@@ -1,4 +1,3 @@
-using Scellecs.Morpeh.Systems;
 using Scellecs.Morpeh;
 using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
@@ -7,17 +6,20 @@ using VContainer;
 [Il2CppSetOption(Option.NullChecks, false)]
 [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-[CreateAssetMenu(menuName = "ECS/Systems/" + nameof(PlayerOrientationSystem))]
-public sealed class PlayerOrientationSystem : UpdateSystem {
+public sealed class PlayerOrientationSystem : CustomUpdateSystem
+{
     TargetInfo _targInfo;
-    PlayerControlledEntity _servInfo;
+    PlayerControlledEntity _controlled;
+
+    public PlayerOrientationSystem(TargetInfo targInfo, PlayerControlledEntity controlled) =>
+        (_targInfo, _controlled) = (targInfo, controlled);
 
     public override void OnAwake() {
     }
 
     public override void OnUpdate(float deltaTime) {
         Entity e;
-        bool isOrientablePlayer = World.TryGetEntity(_servInfo.ControlledId, out e) &&
+        bool isOrientablePlayer = World.TryGetEntity(_controlled.Id, out e) &&
             e.Has<ActorComponent>();
 
         if (!isOrientablePlayer)
@@ -31,6 +33,6 @@ public sealed class PlayerOrientationSystem : UpdateSystem {
     private void InjectDependencies(TargetInfo targInfo, PlayerControlledEntity servInfo)
     {
         _targInfo = targInfo;
-        _servInfo = servInfo;
+        _controlled = servInfo;
     }
 }

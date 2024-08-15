@@ -1,18 +1,18 @@
 using Scellecs.Morpeh;
 using Scellecs.Morpeh.Providers;
-using Scellecs.Morpeh.Systems;
 using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
-using VContainer;
 
 [Il2CppSetOption(Option.NullChecks, false)]
 [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-[CreateAssetMenu(menuName = "ECS/Systems/" + nameof(TargetAcquirementSystem))]
-public sealed class TargetAcquirementSystem : UpdateSystem {
+public sealed class TargetAcquirementSystem : CustomUpdateSystem
+{
     AspectFactory<MobileAgentAspect> _agentFactory;
     Filter _targetAwareFilter;
     GroupRelationMatrix _relMatrix;
+
+    public TargetAcquirementSystem(GroupRelationMatrix relMatrix) => _relMatrix = relMatrix;
 
     public override void OnAwake()
     {
@@ -57,11 +57,5 @@ public sealed class TargetAcquirementSystem : UpdateSystem {
             return true;
         }
         return false;
-    }
-
-    [Inject]
-    private void InjectDependencies(GroupRelationMatrix relMatrix)
-    {
-        _relMatrix = relMatrix;
     }
 }

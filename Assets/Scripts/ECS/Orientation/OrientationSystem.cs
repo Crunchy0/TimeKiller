@@ -1,4 +1,3 @@
-using Scellecs.Morpeh.Systems;
 using Scellecs.Morpeh;
 using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
@@ -6,8 +5,8 @@ using Unity.IL2CPP.CompilerServices;
 [Il2CppSetOption(Option.NullChecks, false)]
 [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-[CreateAssetMenu(menuName = "ECS/Systems/" + nameof(OrientationSystem))]
-public sealed class OrientationSystem : UpdateSystem {
+public sealed class OrientationSystem : CustomUpdateSystem
+{
     Filter _rotFilter;
 
     public override void OnAwake() {

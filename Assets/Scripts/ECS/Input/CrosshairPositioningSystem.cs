@@ -1,19 +1,23 @@
-using Scellecs.Morpeh.Systems;
-using Scellecs.Morpeh;
 using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
-using VContainer;
 
 [Il2CppSetOption(Option.NullChecks, false)]
 [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-[CreateAssetMenu(menuName = "ECS/Systems/" + nameof(CrosshairPositioningSystem))]
-public sealed class CrosshairPositioningSystem : UpdateSystem {
-    ICameraMonitor _camMonitor;
+public sealed class CrosshairPositioningSystem : CustomUpdateSystem
+{
     Controls _controls;
-    PlayerControlledEntity _servInfo;
+    PlayerControlledEntity _controlled;
     TargetInfo _targInfo;
+    ICameraMonitor _camMonitor;
     LayerMask _surfaceMask;
+
+    public CrosshairPositioningSystem(
+        Controls controls,
+        PlayerControlledEntity controlled,
+        TargetInfo targInfo,
+        ICameraMonitor camMonitor) =>
+        (_controls, _controlled, _targInfo, _camMonitor) = (controls, controlled, targInfo, camMonitor);
 
     public override void OnAwake() {
         _surfaceMask = LayerMask.GetMask("Aux");
@@ -69,14 +73,5 @@ public sealed class CrosshairPositioningSystem : UpdateSystem {
             _targInfo.CrosshairPlane.rotation = Quaternion.FromToRotation(Vector3.up, _targInfo.ProjectionNormal);
         }*/
         _targInfo.CrosshairPlane.position = position + _targInfo.ProjectionNormal * 0.01f;
-    }
-
-    [Inject]
-    private void InjectDependencies(TargetInfo targInfo, Controls controls, PlayerControlledEntity servInfo, ICameraMonitor camMonitor)
-    {
-        _camMonitor = camMonitor;
-        _targInfo = targInfo;
-        _controls = controls;
-        _servInfo = servInfo;
     }
 }

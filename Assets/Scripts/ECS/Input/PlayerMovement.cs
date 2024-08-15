@@ -1,5 +1,4 @@
 using Scellecs.Morpeh;
-using Scellecs.Morpeh.Systems;
 using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
 using VContainer;
@@ -7,12 +6,17 @@ using VContainer;
 [Il2CppSetOption(Option.NullChecks, false)]
 [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-[CreateAssetMenu(menuName = "ECS/Systems/" + nameof(PlayerMovement))]
-public sealed class PlayerMovement : UpdateSystem {
-    Filter _camFilter;//, _movFilter;
+public sealed class PlayerMovement : CustomUpdateSystem
+{
     Controls _controls;
-    PlayerControlledEntity _servInfo;
+    PlayerControlledEntity _controlled;
     ICameraMonitor _camMonitor;
+
+    public PlayerMovement(
+        Controls controls,
+        PlayerControlledEntity controlled,
+        ICameraMonitor camMonitor) =>
+        (_controls, _controlled, _camMonitor) = (controls, controlled, camMonitor);
 
     public override void OnAwake()
     {
@@ -21,7 +25,7 @@ public sealed class PlayerMovement : UpdateSystem {
 
     public override void OnUpdate(float deltaTime)
     {
-        if (!World.TryGetEntity(_servInfo.ControlledId, out Entity e) || !e.Has<MovementComponent>())
+        if (!World.TryGetEntity(_controlled.Id, out Entity e) || !e.Has<MovementComponent>())
             return;
 
         ref var movComp = ref e.GetComponent<MovementComponent>();
@@ -35,13 +39,5 @@ public sealed class PlayerMovement : UpdateSystem {
         Vector3 resultDir = movDir.x * camTf.right + movDir.y * fwd;
         movComp.direction.x = resultDir.x;
         movComp.direction.y = resultDir.z;
-    }
-
-    [Inject]
-    private void InjectDependencies(Controls controls, PlayerControlledEntity servInfo, ICameraMonitor camMonitor)
-    {
-        _camMonitor = camMonitor;
-        _controls = controls;
-        _servInfo = servInfo;
     }
 }

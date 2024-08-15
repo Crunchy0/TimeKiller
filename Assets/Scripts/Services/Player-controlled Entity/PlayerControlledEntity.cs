@@ -7,30 +7,30 @@ using Scellecs.Morpeh.Providers;
 
 public class PlayerControlledEntity
 {
-    public EntityId ControlledId { get; private set; }
-    public GameObject Controlled { get; private set; }
+    public EntityId Id { get; private set; }
+    public GameObject Object { get; private set; }
 
-    private EntityId _characterPickerId;
-    private GameObject _characterPicker;
+    private EntityId _defaultId;
+    private GameObject _defaultObject;
 
-    public PlayerControlledEntity(GameObject picker)
+    public PlayerControlledEntity(GameObject defaultObject)
     {
-        _characterPicker = picker;
-        _characterPickerId = _characterPicker.GetComponent<EntityProvider>().Entity.ID;
+        _defaultObject = defaultObject;
+        _defaultId = _defaultObject.GetComponent<EntityProvider>().Entity.ID;
 
-        Controlled = _characterPicker;
-        ControlledId = _characterPickerId;
+        Object = _defaultObject;
+        Id = _defaultId;
     }
 
     public void TakeControl(GameObject gameObject = null)
     {
         EntityProvider provider = null;
-        bool defaultServant = gameObject == null || !gameObject.TryGetComponent(out provider);
+        bool def = gameObject == null || !gameObject.TryGetComponent(out provider);
 
-        if (defaultServant)
+        if (def)
         {
-            _characterPicker.transform.position = Controlled.transform.position;
-            if (World.Default.TryGetEntity(ControlledId, out Entity e) && e.Has<PlayerComponent>())
+            _defaultObject.transform.position = Object.transform.position;
+            if (World.Default.TryGetEntity(Id, out Entity e) && e.Has<PlayerComponent>())
             {
                 e.RemoveComponent<PlayerComponent>();
             }
@@ -40,7 +40,7 @@ public class PlayerControlledEntity
             provider.Entity.AddComponent<PlayerComponent>();
         }
 
-        Controlled = defaultServant ? _characterPicker : gameObject;
-        ControlledId = defaultServant ? _characterPickerId : provider.Entity.ID;
+        Object = def ? _defaultObject : gameObject;
+        Id = def ? _defaultId : provider.Entity.ID;
     }
 }

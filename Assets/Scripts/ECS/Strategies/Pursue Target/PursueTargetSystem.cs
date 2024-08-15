@@ -1,14 +1,12 @@
 using Scellecs.Morpeh;
-using Scellecs.Morpeh.Providers;
-using Scellecs.Morpeh.Systems;
 using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
 
 [Il2CppSetOption(Option.NullChecks, false)]
 [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-[CreateAssetMenu(menuName = "ECS/Systems/" + nameof(PursueTargetSystem))]
-public sealed class PursueTargetSystem : UpdateSystem {
+public sealed class PursueTargetSystem : CustomUpdateSystem
+{
     AspectFactory<MobileAgentAspect> _agentFactory;
     Filter _pursuers;
     Color _connectionColor = new Color(0.95f, 0.05f, 0.7f);

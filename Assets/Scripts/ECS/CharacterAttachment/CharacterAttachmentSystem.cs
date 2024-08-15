@@ -1,21 +1,23 @@
-using Scellecs.Morpeh.Providers;
-using Scellecs.Morpeh.Systems;
 using Scellecs.Morpeh;
 using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
-using VContainer;
 
 [Il2CppSetOption(Option.NullChecks, false)]
 [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-[CreateAssetMenu(menuName = "ECS/Systems/" + nameof(CharacterAttachmentSystem))]
-public sealed class CharacterAttachmentSystem : UpdateSystem {
+public sealed class CharacterAttachmentSystem : CustomUpdateSystem {
     Controls _controls;
     ICameraMonitor _camMonitor;
-    PlayerControlledEntity _servInfo;
+    PlayerControlledEntity _controlled;
     Event<PickCharacterEvent> _pickEvt;
     Event<AttachedToCharacterEvent> _attachEvt;
     Event<PrimaryActionEvent> _primEvt;
+
+    public CharacterAttachmentSystem(
+        Controls controls,
+        PlayerControlledEntity controlled,
+        ICameraMonitor camMonitor) =>
+        (_controls, _controlled, _camMonitor) = (controls, controlled, camMonitor);
 
     public override void OnAwake()
     {
@@ -28,11 +30,11 @@ public sealed class CharacterAttachmentSystem : UpdateSystem {
     {
         if (_controls.Interactions.DetachFromEntity.WasReleasedThisFrame())
         {
-            _servInfo.TakeControl();
+            _controlled.TakeControl();
             _attachEvt.NextFrame(new AttachedToCharacterEvent
             {
-                controlledId = _servInfo.ControlledId,
-                controlledTransform = _servInfo.Controlled.transform
+                controlledId = _controlled.Id,
+                controlledTransform = _controlled.Object.transform
             });
             return;
         }
@@ -46,19 +48,11 @@ public sealed class CharacterAttachmentSystem : UpdateSystem {
         // What if rigidbody is not on the entitie'd game object? Try finding in parent?
         var gameObject = hit.rigidbody.gameObject;
 
-        _servInfo.TakeControl(gameObject);
+        _controlled.TakeControl(gameObject);
         _attachEvt.NextFrame(new AttachedToCharacterEvent
         {
-            controlledId = _servInfo.ControlledId,
-            controlledTransform = _servInfo.Controlled.transform
+            controlledId = _controlled.Id,
+            controlledTransform = _controlled.Object.transform
         });
-    }
-
-    [Inject]
-    private void InjectDependencies(Controls controls, PlayerControlledEntity servInfo, ICameraMonitor camMonitor)
-    {
-        _camMonitor = camMonitor;
-        _controls = controls;
-        _servInfo = servInfo;
     }
 }
