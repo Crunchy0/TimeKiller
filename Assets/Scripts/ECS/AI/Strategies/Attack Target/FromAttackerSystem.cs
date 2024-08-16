@@ -7,15 +7,15 @@ using Unity.IL2CPP.CompilerServices;
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 public sealed class FromAttackerSystem : CustomUpdateSystem
 {
-    AspectFactory<MobileAgentAspect> _agentFactory;
+    AspectFactory<AgentAspect> _agentFactory;
     Filter _attackers;
     Event<PrimaryActionEvent> _primEvt;
 
     public override void OnAwake()
     {
-        _agentFactory = World.GetAspectFactory<MobileAgentAspect>();
+        _agentFactory = World.GetAspectFactory<AgentAspect>();
         _attackers = World.Filter.
-            Extend<MobileAgentAspect>().
+            Extend<AgentAspect>().
             With<TargetObserverComponent>().
             With<AttackTargetComponent>().
             Build();
@@ -29,7 +29,7 @@ public sealed class FromAttackerSystem : CustomUpdateSystem
             var mobileAgent = _agentFactory.Get(e);
             var target = e.GetComponent<TargetObserverComponent>();
 
-            if (target.IsAcquired)
+            if (target.isInSight)
             {
                 float distance = (target.transform.position - mobileAgent.Body.transform.position).magnitude;
                 if (distance <= mobileAgent.Actor.config.AttackRange)

@@ -7,22 +7,22 @@ using Unity.IL2CPP.CompilerServices;
 [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 public sealed class AgentPathUpdateSystem : CustomUpdateSystem {
-    AspectFactory<MobileAgentAspect> _agentFactory;
+    AspectFactory<AgentAspect> _agentFactory;
     Filter _agents;
 
     public override void OnAwake()
     {
-        _agentFactory = World.GetAspectFactory<MobileAgentAspect>();
-        _agents = World.Filter.Extend<MobileAgentAspect>().Build();
+        _agentFactory = World.GetAspectFactory<AgentAspect>();
+        _agents = World.Filter.Extend<AgentAspect>().With<AgentPathComponent>().Build();
     }
 
     public override void OnUpdate(float deltaTime)
     {
         foreach(Entity e in _agents)
         {
-            var mobileAgent = _agentFactory.Get(e);
-            var body = mobileAgent.Body;
-            ref var agentPath = ref mobileAgent.Path;
+            var agent = _agentFactory.Get(e);
+            var body = agent.Body;
+            ref var agentPath = ref e.GetComponent<AgentPathComponent>();
 
             float curTime = Time.time;
             if (agentPath.lastUpdatePath + agentPath.pathUpdateInterval > curTime)

@@ -7,13 +7,14 @@ using Unity.IL2CPP.CompilerServices;
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 public sealed class ExplorationSystem : CustomUpdateSystem
 {
-    AspectFactory<MobileAgentAspect> _agentFactory;
+    AspectFactory<AgentAspect> _agentFactory;
     Filter _explorers;
 
     public override void OnAwake() {
-        _agentFactory = World.GetAspectFactory<MobileAgentAspect>();
+        _agentFactory = World.GetAspectFactory<AgentAspect>();
         _explorers = World.Filter.
-            Extend<MobileAgentAspect>().
+            Extend<AgentAspect>().
+            With<AgentPathComponent>().
             With<ExplorerComponent>().
             Build();
     }
@@ -24,17 +25,17 @@ public sealed class ExplorationSystem : CustomUpdateSystem
             var mobileAgent = _agentFactory.Get(e);
 
             var body = mobileAgent.Body;
-            ref var agent = ref mobileAgent.Path;
             ref var actor = ref mobileAgent.Actor;
+            ref var agentPath = ref e.GetComponent<AgentPathComponent>();
             ref var explorer = ref e.GetComponent<ExplorerComponent>();
 
-            if (agent.pathNodeIdx < 0 || agent.pathNodeIdx >= agent.path.Length)
+            if (agentPath.pathNodeIdx < 0 || agentPath.pathNodeIdx >= agentPath.path.Length)
                 actor.lookTarget = actor.eye.position + actor.eye.forward;
             else
-                actor.lookTarget = agent.path[agent.pathNodeIdx];
+                actor.lookTarget = agentPath.path[agentPath.pathNodeIdx];
 
             bool requiresTarget = explorer.targetZone == null;
-            bool reachedTarget = (agent.destination - body.transform.position).magnitude < 1f;
+            bool reachedTarget = (agentPath.destination - body.transform.position).magnitude < 1f;
 
             if (actor.currentZone == null || !requiresTarget && !reachedTarget)
                 continue;
@@ -42,7 +43,7 @@ public sealed class ExplorationSystem : CustomUpdateSystem
             float exploreRand = Random.Range(0f, 1f);
             bool stay = exploreRand > actor.config.ExplorationPenchant;
             explorer.targetZone = stay ? actor.currentZone : actor.currentZone.ChooseNextZone(actor.config.GroupId);
-            agent.destination = explorer.targetZone.GetRandomPoint();
+            agentPath.destination = explorer.targetZone.GetRandomPoint();
         }
     }
 }

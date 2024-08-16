@@ -8,7 +8,7 @@ using Unity.IL2CPP.CompilerServices;
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 public sealed class TargetAcquirementSystem : CustomUpdateSystem
 {
-    AspectFactory<MobileAgentAspect> _agentFactory;
+    AspectFactory<AgentAspect> _agentFactory;
     Filter _targetAwareFilter;
     GroupRelationMatrix _relMatrix;
 
@@ -16,9 +16,9 @@ public sealed class TargetAcquirementSystem : CustomUpdateSystem
 
     public override void OnAwake()
     {
-        _agentFactory = World.GetAspectFactory<MobileAgentAspect>();
+        _agentFactory = World.GetAspectFactory<AgentAspect>();
         _targetAwareFilter = World.Filter.
-            Extend<MobileAgentAspect>().
+            Extend<AgentAspect>().
             With<TargetObserverComponent>().
             Without<AttackTargetComponent>().
             Build();
@@ -38,7 +38,7 @@ public sealed class TargetAcquirementSystem : CustomUpdateSystem
         }
     }
 
-    private bool TryAcquireTarget(MobileAgentAspect mobileAgent, ref TargetObserverComponent target)
+    private bool TryAcquireTarget(AgentAspect mobileAgent, ref TargetObserverComponent target)
     {
         var actor = mobileAgent.Actor;
         foreach (Collider col in Physics.OverlapSphere(actor.eye.position, target.sightDistance, LayerMask.GetMask("Population")))
