@@ -9,7 +9,6 @@ public class MiscSystemsFactory : ISystemsGroupFactory
     public SystemsGroup Create(World world)
     {
         List<ISystem> systems = new List<ISystem> {
-            new TimersUpdateSystem(),
             new MovementSystem()
         };
 

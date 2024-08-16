@@ -18,7 +18,7 @@ public sealed class AiNavigationSystem : CustomUpdateSystem
         _agentFactory = World.GetAspectFactory<MobileAgentAspect>();
         _aiMovementFilter = World.Filter.
             With<ActorComponent>().
-            With<AiAgentComponent>().
+            With<AgentPathComponent>().
             With<BodyComponent>().
             With<MovementComponent>().
             Without<PlayerComponent>().
@@ -32,7 +32,7 @@ public sealed class AiNavigationSystem : CustomUpdateSystem
             var mobileAgent = _agentFactory.Get(e);
             ref var body = ref mobileAgent.Body;
             ref var movement = ref mobileAgent.Movement;
-            ref var agent = ref mobileAgent.AiAgent;
+            ref var agent = ref mobileAgent.Path;
             ref var actor = ref mobileAgent.Actor;
 
             int i = agent.pathNodeIdx;
@@ -85,7 +85,7 @@ public sealed class AiNavigationSystem : CustomUpdateSystem
 
     private bool IsObstacleEnemy(CharacterGroupId charId, GameObject gameObject)
     {
-        var provider = gameObject.GetComponentInParent<AiAgentProvider>();
+        var provider = gameObject.GetComponentInParent<AgentPathProvider>();
         if (provider == null || !provider.Entity.Has<ActorComponent>())
             return false;
 

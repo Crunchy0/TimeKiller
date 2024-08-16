@@ -33,7 +33,7 @@ public sealed class PursueTargetSystem : CustomUpdateSystem
                 continue;
 
             var body = mobileAgent.Body;
-            ref var agent = ref mobileAgent.AiAgent;
+            ref var agent = ref mobileAgent.Path;
             Debug.DrawLine(body.transform.position, target.transform.position, _connectionColor);
 
             // This should be in a separate system!

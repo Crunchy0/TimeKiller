@@ -7,7 +7,6 @@ using VContainer;
 public class SpawnZone : Zone
 {
     [SerializeField] [Min(5f)] float _spawnInterval;
-    Timer _spawnTimer;
     // Owners factory or prefab here
     [SerializeField] CharacterGroupId _ownerId;
     ICharacterFactory _ownerFactory;
@@ -45,21 +44,7 @@ public class SpawnZone : Zone
 
     private void Awake()
     {
-        _spawnTimer = new Timer(_spawnInterval);
-        _spawnTimer.Reset();
         SetOwnerGroup(_ownerId);
-    }
-
-    private void OnEnable()
-    {
-        TimerManager.Subscribe(_spawnTimer.Update);
-        _spawnTimer.TimerExpired += OnSpawnRequest;
-    }
-
-    private void OnDisable()
-    {
-        TimerManager.Unsubscribe(_spawnTimer.Update);
-        _spawnTimer.TimerExpired -= OnSpawnRequest;
     }
 
     private void OnSpawnRequest()
@@ -73,7 +58,7 @@ public class SpawnZone : Zone
         Collider col = gameObject.GetComponentInChildren<Collider>();
         Bounds bounds = col.bounds;
         gameObject.transform.position = GetRandomPoint() + (bounds.size.y / 2 + 0.1f) * Vector3.up;
-        _spawnTimer.Reset();
+        // Update last spawn time
     }
 
     private void SetOwnerGroup(CharacterGroupId groupId)
