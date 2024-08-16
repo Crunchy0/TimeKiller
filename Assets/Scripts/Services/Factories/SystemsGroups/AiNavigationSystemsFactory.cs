@@ -14,6 +14,7 @@ public class AiNavigationSystemsFactory : ISystemsGroupFactory
     {
         List<ISystem> systems = new List<ISystem>
         {
+            new AgentPathUpdateSystem(),
             new AiNavigationSystem(_relMatrix)
         };
 

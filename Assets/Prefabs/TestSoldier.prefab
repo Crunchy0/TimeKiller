@@ -181,13 +181,13 @@ GameObject:
   - component: {fileID: 5920589667256189663}
   - component: {fileID: 8184231579238704416}
   - component: {fileID: 7737348667151127447}
-  - component: {fileID: 647671593904275064}
-  - component: {fileID: 8819689895566479307}
-  - component: {fileID: 6461388996696664061}
   - component: {fileID: 3107546673308750404}
-  - component: {fileID: 3597951128387492086}
-  - component: {fileID: 202436621818752497}
+  - component: {fileID: 6461388996696664061}
+  - component: {fileID: 8819689895566479307}
+  - component: {fileID: 5175716288218539776}
   - component: {fileID: 8907113512155733533}
+  - component: {fileID: 202436621818752497}
+  - component: {fileID: 3597951128387492086}
   m_Layer: 7
   m_Name: TestSoldier
   m_TagString: Untagged
@@ -256,7 +256,7 @@ MonoBehaviour:
     transform: {fileID: 0}
     rigidbody: {fileID: 0}
   _rigidbody: {fileID: 8184231579238704416}
---- !u!114 &647671593904275064
+--- !u!114 &3107546673308750404
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -265,14 +265,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 7193201995071429587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7b3b7083981e9b747b7360d17e6eb6a7, type: 3}
+  m_Script: {fileID: 11500000, guid: 366415d3a1de9324184bfecc8dd88955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializedData:
-    destination: {x: 0, y: 0, z: 0}
-    path: []
-    pathNodeIdx: 0
-  _pathUpdateTime: 0.3
+    direction: {x: 0, y: 0}
+    speed: 20
+--- !u!114 &6461388996696664061
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7193201995071429587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e2626d9330c46b488bcc33826725d34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedData:
+    maxHp: 50
+    hp: 0
+    regen: 0.08
 --- !u!114 &8819689895566479307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -291,7 +305,7 @@ MonoBehaviour:
     equipmentLocation: {fileID: 1009466108874607816}
     eye: {fileID: 79855116894309673}
     config: {fileID: 11400000, guid: d845b61c44f86d64a8eeb43da24927b3, type: 2}
---- !u!114 &6461388996696664061
+--- !u!114 &5175716288218539776
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -300,14 +314,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 7193201995071429587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e2626d9330c46b488bcc33826725d34, type: 3}
+  m_Script: {fileID: 11500000, guid: 7b3b7083981e9b747b7360d17e6eb6a7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializedData:
-    maxHp: 50
-    hp: 0
-    regen: 0.08
---- !u!114 &3107546673308750404
+    destinationProximity: 2
+    pathUpdateInterval: 0.3
+    lastUpdatePath: 0
+    destination: {x: 0, y: 0, z: 0}
+    path: []
+    pathNodeIdx: 0
+--- !u!114 &8907113512155733533
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -316,26 +333,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 7193201995071429587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 366415d3a1de9324184bfecc8dd88955, type: 3}
+  m_Script: {fileID: 11500000, guid: 5f2979e1229a876419d482666f050960, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializedData:
-    direction: {x: 0, y: 0}
-    speed: 20
---- !u!114 &3597951128387492086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7193201995071429587}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ba24cd9145d4ca4283c40b9e550dd5b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  serializedData:
-    targetZone: {fileID: 0}
+    sightDistance: 10
+    fov: {x: 140, y: 120}
+    forgetTime: 5
+    transform: {fileID: 0}
+    lastTimeSeen: 0
+    isInSight: 0
 --- !u!114 &202436621818752497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,7 +358,7 @@ MonoBehaviour:
   _equipmentPrefab: {fileID: 7005638240070314592, guid: 0b3262bacde298a48a63bec853493b9c,
     type: 3}
   _equipmentLocation: {fileID: 1009466108874607816}
---- !u!114 &8907113512155733533
+--- !u!114 &3597951128387492086
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -360,16 +367,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7193201995071429587}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f2979e1229a876419d482666f050960, type: 3}
+  m_Script: {fileID: 11500000, guid: 4ba24cd9145d4ca4283c40b9e550dd5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   serializedData:
-    sightDistance: 0
-    fov: {x: 0, y: 0}
-    forgetTime: 0
-    transform: {fileID: 0}
-    lastTimeSeen: 0
-    isInSight: 0
+    targetZone: {fileID: 0}
 --- !u!1 &8645153153438373236
 GameObject:
   m_ObjectHideFlags: 0

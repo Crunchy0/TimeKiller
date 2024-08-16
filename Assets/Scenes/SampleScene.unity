@@ -488,31 +488,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1342834560262264113, guid: bfb0a78d2e3ce56449b7acedf227edd6,
-        type: 3}
-      propertyPath: serializedData.fov.x
-      value: 160
-      objectReference: {fileID: 0}
-    - target: {fileID: 1342834560262264113, guid: bfb0a78d2e3ce56449b7acedf227edd6,
-        type: 3}
-      propertyPath: serializedData.fov.y
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 1342834560262264113, guid: bfb0a78d2e3ce56449b7acedf227edd6,
-        type: 3}
-      propertyPath: serializedData.forgetTime
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 1342834560262264113, guid: bfb0a78d2e3ce56449b7acedf227edd6,
-        type: 3}
-      propertyPath: serializedData.sightDistance
-      value: 8
-      objectReference: {fileID: 0}
-    - target: {fileID: 1808309086697614142, guid: bfb0a78d2e3ce56449b7acedf227edd6,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2164000167951085048, guid: bfb0a78d2e3ce56449b7acedf227edd6,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2685,26 +2660,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Soldier
-      objectReference: {fileID: 0}
-    - target: {fileID: 8907113512155733533, guid: 85a05b5c8014ad345aacf587bf72b095,
-        type: 3}
-      propertyPath: serializedData.fov.x
-      value: 140
-      objectReference: {fileID: 0}
-    - target: {fileID: 8907113512155733533, guid: 85a05b5c8014ad345aacf587bf72b095,
-        type: 3}
-      propertyPath: serializedData.fov.y
-      value: 120
-      objectReference: {fileID: 0}
-    - target: {fileID: 8907113512155733533, guid: 85a05b5c8014ad345aacf587bf72b095,
-        type: 3}
-      propertyPath: serializedData.forgetTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 8907113512155733533, guid: 85a05b5c8014ad345aacf587bf72b095,
-        type: 3}
-      propertyPath: serializedData.sightDistance
-      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

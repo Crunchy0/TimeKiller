@@ -13,19 +13,19 @@ public struct MobileAgentAspect : IAspect, IFilterExtension
     public ref BodyComponent Body => ref _bodyStash.Get(Entity);
     public ref MovementComponent Movement => ref _movementStash.Get(Entity);
     public ref ActorComponent Actor => ref _actorStash.Get(Entity);
-    public ref AiAgentComponent AiAgent => ref _agentStash.Get(Entity);
+    public ref AgentPathComponent Path => ref _pathStash.Get(Entity);
 
     Stash<BodyComponent> _bodyStash;
     Stash<MovementComponent> _movementStash;
     Stash<ActorComponent> _actorStash;
-    Stash<AiAgentComponent> _agentStash;
+    Stash<AgentPathComponent> _pathStash;
 
     public void OnGetAspectFactory(World world)
     {
         _bodyStash = world.GetStash<BodyComponent>();
         _movementStash = world.GetStash<MovementComponent>();
         _actorStash = world.GetStash<ActorComponent>();
-        _agentStash = world.GetStash<AiAgentComponent>();
+        _pathStash = world.GetStash<AgentPathComponent>();
     }
 
     public FilterBuilder Extend(FilterBuilder builder)
@@ -34,7 +34,7 @@ public struct MobileAgentAspect : IAspect, IFilterExtension
             With<BodyComponent>().
             With<MovementComponent>().
             With<ActorComponent>().
-            With<AiAgentComponent>().
+            With<AgentPathComponent>().
             Without<PlayerComponent>();
     }
 }

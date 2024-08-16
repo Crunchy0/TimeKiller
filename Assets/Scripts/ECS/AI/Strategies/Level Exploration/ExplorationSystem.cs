@@ -24,7 +24,7 @@ public sealed class ExplorationSystem : CustomUpdateSystem
             var mobileAgent = _agentFactory.Get(e);
 
             var body = mobileAgent.Body;
-            ref var agent = ref mobileAgent.AiAgent;
+            ref var agent = ref mobileAgent.Path;
             ref var actor = ref mobileAgent.Actor;
             ref var explorer = ref e.GetComponent<ExplorerComponent>();
 
