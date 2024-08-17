@@ -424,6 +424,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Soldier (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 7193201995071429587, guid: 85a05b5c8014ad345aacf587bf72b095,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8907113512155733533, guid: 85a05b5c8014ad345aacf587bf72b095,
         type: 3}
       propertyPath: m_Enabled
@@ -584,14 +589,19 @@ PrefabInstance:
     - target: {fileID: 1141955973715455964, guid: bfb0a78d2e3ce56449b7acedf227edd6,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1317051838106539105, guid: bfb0a78d2e3ce56449b7acedf227edd6,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1342834560262264113, guid: bfb0a78d2e3ce56449b7acedf227edd6,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1808309086697614142, guid: bfb0a78d2e3ce56449b7acedf227edd6,
         type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -651,10 +661,15 @@ PrefabInstance:
       propertyPath: m_Name
       value: Monster
       objectReference: {fileID: 0}
+    - target: {fileID: 8087448856805712590, guid: bfb0a78d2e3ce56449b7acedf227edd6,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8184270240985061819, guid: bfb0a78d2e3ce56449b7acedf227edd6,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
