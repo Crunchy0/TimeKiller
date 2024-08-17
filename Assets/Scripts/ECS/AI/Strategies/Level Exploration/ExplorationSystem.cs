@@ -29,11 +29,6 @@ public sealed class ExplorationSystem : CustomUpdateSystem
             ref var agentPath = ref e.GetComponent<AgentPathComponent>();
             ref var explorer = ref e.GetComponent<ExplorerComponent>();
 
-            if (agentPath.pathNodeIdx < 0 || agentPath.pathNodeIdx >= agentPath.path.Length)
-                actor.lookTarget = actor.eye.position + actor.eye.forward;
-            else
-                actor.lookTarget = agentPath.path[agentPath.pathNodeIdx];
-
             bool requiresTarget = explorer.targetZone == null;
             bool reachedTarget = (agentPath.destination - body.transform.position).magnitude < 1f;
 
