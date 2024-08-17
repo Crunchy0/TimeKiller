@@ -18,6 +18,8 @@ public class CharacterConfig : ScriptableObject
     public float Regen { get => _regeneration; }
 
     public float MovSpeed { get => _movementSpeed; }
+    public float BaseAngularSpeed { get => _baseAngularSpeed; }
+    public float AngularAcceleration { get => _angularAcceleration; }
     public float ExplorationPenchant { get => _explorationPenchant; }
 
     public float AttackRange { get => _attackRange; }
@@ -33,6 +35,8 @@ public class CharacterConfig : ScriptableObject
 
     [Header("Navigation")]
     [SerializeField] private float _movementSpeed;
+    [SerializeField] private float _baseAngularSpeed;
+    [SerializeField] private float _angularAcceleration;
     [SerializeField] [Range(0f, 1f)] private float _explorationPenchant;
 
     [Header("Combat")]

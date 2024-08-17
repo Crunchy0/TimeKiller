@@ -16,9 +16,8 @@ MonoBehaviour:
   _maxHp: 50
   _regeneration: 0.05
   _movementSpeed: 10
-  _sightRange: 11
-  _fov: {x: 120, y: 120}
-  _lostTargetPursuitDuration: 6
+  _baseAngularSpeed: 0.5
+  _angularAcceleration: 1.2
   _explorationPenchant: 0.858
   _attackRange: 10
   _attackSpan: 1

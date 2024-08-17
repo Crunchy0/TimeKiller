@@ -1,4 +1,5 @@
 using Scellecs.Morpeh;
+using Scellecs.Morpeh.Providers;
 using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
 
@@ -7,13 +8,13 @@ using Unity.IL2CPP.CompilerServices;
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 public sealed class TargetPreservationSystem : CustomUpdateSystem
 {
-    AspectFactory<MobileAgentAspect> _agentFactory;
+    AspectFactory<AgentAspect> _agentFactory;
     Filter _targetAwareFilter;
 
     public override void OnAwake() {
-        _agentFactory = World.GetAspectFactory<MobileAgentAspect>();
+        _agentFactory = World.GetAspectFactory<AgentAspect>();
         _targetAwareFilter = World.Filter.
-            Extend<MobileAgentAspect>().
+            Extend<AgentAspect>().
             With<TargetObserverComponent>().
             Build();
     }
@@ -53,24 +54,29 @@ public sealed class TargetPreservationSystem : CustomUpdateSystem
         // TODO: Adjust to the collider's transform (up/down vectors)
         Vector3 bottom = bounds.center + (bounds.size.y / 2) * Vector3.down;
         Vector3 top = bottom + bounds.size.y * Vector3.up;
-        bool isBottomVisible = true;
-        bool isTopVisible = true;
-        if (Physics.Raycast(eye.position, bottom - eye.position, out var hitBottom, target.sightDistance))
+
+        bool rcast = Physics.Raycast(eye.position, bottom - eye.position, out var hitBottom, target.sightDistance);
+        if (rcast && HitId(hitBottom) == target.id)
         {
-            bool hitAgent = hitBottom.transform.gameObject.layer == LayerMask.NameToLayer("Population");
-            if (!hitAgent)
-                isBottomVisible = false;
-        }
-        if (Physics.Raycast(eye.position, top - eye.position, out var hitTop, target.sightDistance))
-        {
-            bool hitAgent = hitTop.transform.gameObject.layer == LayerMask.NameToLayer("Population");
-            if (!hitAgent)
-                isTopVisible = false;
+            Debug.DrawLine(eye.position, hitBottom.transform.position, Color.green);
+            return true;
         }
 
-        if (isBottomVisible || isTopVisible)
-            Debug.DrawLine(eye.position, eye.position + dir, Color.green);
+        rcast = Physics.Raycast(eye.position, top - eye.position, out var hitTop, target.sightDistance);
+        if (rcast && HitId(hitTop) == target.id)
+        {
+            Debug.DrawLine(eye.position, hitTop.transform.position, Color.green);
+            return true;
+        }
 
-        return isBottomVisible || isTopVisible;
+        return false;
+    }
+
+    private EntityId HitId(RaycastHit hit)
+    {
+        bool hitAgent = hit.transform.gameObject.layer == LayerMask.NameToLayer("Population");
+        var provider = hit.transform.GetComponentInParent<EntityProvider>();
+        bool invalid = !hitAgent || provider == null || provider.Entity.IsNullOrDisposed();
+        return invalid ? EntityId.Invalid : provider.Entity.ID;
     }
 }

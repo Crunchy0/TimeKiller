@@ -7,17 +7,12 @@ using Unity.IL2CPP.CompilerServices;
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 public sealed class AttackTargetSystem : CustomUpdateSystem
 {
-    AspectFactory<MobileAgentAspect> _agentFactory;
     Filter _attackers;
     Event<PrimaryActionEvent> _primEvt;
 
     public override void OnAwake() {
-        _agentFactory = World.GetAspectFactory<MobileAgentAspect>();
         _attackers = World.Filter.
-            Extend<MobileAgentAspect>().
-            With<TargetObserverComponent>().
             With<AttackTargetComponent>().
-            With<ActiveEquipment>().
             Build();
         
         _primEvt = World.GetEvent<PrimaryActionEvent>();

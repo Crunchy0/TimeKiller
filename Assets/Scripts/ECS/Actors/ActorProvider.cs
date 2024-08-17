@@ -11,7 +11,7 @@ public sealed class ActorProvider : MonoProvider<ActorComponent> {
     protected override void Initialize()
     {
         ref var actorComp = ref GetData();
-        actorComp.lookTarget = Vector3.zero;
+        actorComp.lookTarget = actorComp.eye.position + actorComp.eye.forward;
     }
 
     private void OnTriggerEnter(Collider other)

@@ -7,13 +7,13 @@ using Unity.IL2CPP.CompilerServices;
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 public sealed class PursuerToExplorerSystem : CustomUpdateSystem
 {
-    AspectFactory<MobileAgentAspect> _agentFactory;
+    AspectFactory<AgentAspect> _agentFactory;
     Filter _pursuers;
 
     public override void OnAwake() {
-        _agentFactory = World.GetAspectFactory<MobileAgentAspect>();
+        _agentFactory = World.GetAspectFactory<AgentAspect>();
         _pursuers = World.Filter.
-            Extend<MobileAgentAspect>().
+            Extend<AgentAspect>().
             With<TargetObserverComponent>().
             With<TargetPursuerComponent>().
             Build();
