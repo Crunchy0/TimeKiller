@@ -36,15 +36,6 @@ public sealed class PursueTargetSystem : CustomUpdateSystem
             ref var agent = ref mobileAgent.Path;
             Debug.DrawLine(body.transform.position, target.transform.position, _connectionColor);
 
-            // This should be in a separate system!
-            if (target.isInSight)
-                actor.lookTarget = target.transform.position;     // Look at the prey
-            else if (agent.pathNodeIdx >= 0 && agent.pathNodeIdx < agent.path.Length)
-                actor.lookTarget = agent.path[agent.pathNodeIdx];
-            //else
-            //    actor.lookTarget = WHERE???
-
-
             float distance = (mobileAgent.Body.transform.position - target.transform.position).magnitude;
             if (target.isInSight && distance <= actor.config.AttackRange)
             {

@@ -19,14 +19,7 @@ public sealed class EquipmentOrientationSystem : CustomUpdateSystem
             var actorComp = e.GetComponent<ActorComponent>();
             var activeEqComp = e.GetComponent<ActiveEquipment>();
 
-            Transform eqTf = activeEqComp.gameObject.transform;
-            Vector3 direction = actorComp.lookTarget - eqTf.position;
-            Vector3 proj = Vector3.ProjectOnPlane(direction, Vector3.up);
-            float angle = Vector3.Angle(proj, direction) * (direction.y > proj.y ? -1 : 1);
-            //float angle = Vector3.SignedAngle(actorComp.target, eqTf.position, Vector3.up);
-            //direction = Quaternion.AngleAxis(angle, Vector3.up) * direction;
-            eqTf.localRotation = Quaternion.Euler(angle, 0f, 0f);
-            //eqTf.LookAt(eqTf.position + direction);
+            activeEqComp.gameObject.transform.LookAt(actorComp.lookTarget);
         }
     }
 }

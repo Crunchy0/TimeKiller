@@ -7,6 +7,7 @@ public class CharacterOrientationSystemsFactory : ISystemsGroupFactory
     {
         List<ISystem> systems = new List<ISystem>
         {
+            new NpcTargetPositioningSystem(),
             new OrientationSystem()
         };
 
