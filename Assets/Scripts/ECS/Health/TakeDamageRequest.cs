@@ -1,13 +1,12 @@
 using Scellecs.Morpeh;
-using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
 
 [System.Serializable]
 [Il2CppSetOption(Option.NullChecks, false)]
 [Il2CppSetOption(Option.ArrayBoundsChecks, false)]
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
-public struct BulletSpawner : IComponent {
-    public Transform spawnPoint;
+public struct TakeDamageRequest : IRequestData
+{
+    public EntityId targetId;
     public float damage;
-    public GameObject bulletMarkPrefab;
 }

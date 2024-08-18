@@ -36,6 +36,7 @@ public class LevelLifetimeScope : LifetimeScope
         builder.Register<StrategyTransitionSystemsFactory>(Lifetime.Scoped);
         builder.Register<TargetTrackingSystemsFactory>(Lifetime.Scoped);
         builder.Register<MiscSystemsFactory>(Lifetime.Scoped);
+        builder.Register<HealthSystemsFactory>(Lifetime.Scoped);
 
         builder.Register<WorldInitializer>(Lifetime.Scoped);
     }

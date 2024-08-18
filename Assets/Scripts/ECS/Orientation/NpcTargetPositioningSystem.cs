@@ -31,8 +31,11 @@ public sealed class NpcTargetPositioningSystem : CustomUpdateSystem {
             if (_targetStash.Has(e) && _attackStash.Has(e))
             {
                 var target = _targetStash.Get(e);
-                actor.lookTarget = target.transform.position;
-                actor.lookTarget.y = actor.eye.position.y;
+                if (target.IsAcquired)
+                {
+                    actor.lookTarget = target.transform.position;
+                    actor.lookTarget.y = actor.eye.position.y;
+                }
                 continue;
             }
 

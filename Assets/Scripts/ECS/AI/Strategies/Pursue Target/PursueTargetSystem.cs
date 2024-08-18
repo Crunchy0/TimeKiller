@@ -30,12 +30,12 @@ public sealed class PursueTargetSystem : CustomUpdateSystem
             ref var actor = ref agent.Actor;
             ref var target = ref e.GetComponent<TargetObserverComponent>();
 
-            if (!World.TryGetEntity(target.id, out var targetEntity) || targetEntity.IsNullOrDisposed())
+            if (!target.IsAcquired)
                 continue;
 
             var body = agent.Body;
             ref var agentPath = ref e.GetComponent<AgentPathComponent>();
-            Debug.DrawLine(body.transform.position, target.transform.position, _connectionColor);
+            //Debug.DrawLine(body.transform.position, target.transform.position, _connectionColor);
 
             float distance = (agent.Body.transform.position - target.transform.position).magnitude;
             if (target.isInSight && distance <= actor.config.AttackRange)
@@ -48,6 +48,9 @@ public sealed class PursueTargetSystem : CustomUpdateSystem
             else
             {
                 // Just keep following the prey
+                if (!World.TryGetEntity(target.id, out var targetEntity) || targetEntity.IsNullOrDisposed())
+                    continue;
+
                 agentPath.destination = target.transform.position;
                 if (targetEntity.Has<MovementComponent>())
                 {

@@ -11,6 +11,5 @@ public sealed class HealthProvider : MonoProvider<HealthComponent> {
     {
         ref var health = ref GetData();
         health.hp = health.maxHp;
-        Debug.Log($"Entity: {Entity}, health: {health.hp}, regen: {health.regen}");
     }
 }

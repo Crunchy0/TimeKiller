@@ -32,7 +32,6 @@ public sealed class NpcSpawnSystem : CustomUpdateSystem {
                 int count = groupPrefabs.Count;
                 int idx = Random.Range(0, count);
 
-                Debug.Log($"Next spawn time: {spawner.lastSpawnTime + spawner.lastSpawnTime}, current time: {curTime}");
                 var freshNpc = GameObject.Instantiate(groupPrefabs[idx]);
                 Collider col = freshNpc.GetComponentInChildren<Collider>();
                 if (col == null)
