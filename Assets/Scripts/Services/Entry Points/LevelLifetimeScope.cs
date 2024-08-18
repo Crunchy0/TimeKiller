@@ -22,6 +22,8 @@ public class LevelLifetimeScope : LifetimeScope
         CameraSetup setup = new(_cameraTransform, _characterPicker.transform);
         builder.Register<CameraController>(Lifetime.Scoped).AsImplementedInterfaces().AsSelf().WithParameter("setup", setup);
 
+        builder.Register<NpcPrototypeStorage>(Lifetime.Scoped);
+
         builder.Register<AiNavigationSystemsFactory>(Lifetime.Scoped);
         builder.Register<CameraSystemsFactory>(Lifetime.Scoped);
         builder.Register<CharacterAttachmentSystemsFactory>(Lifetime.Scoped);
@@ -29,6 +31,7 @@ public class LevelLifetimeScope : LifetimeScope
         builder.Register<EquipmentSystemsFactory>(Lifetime.Scoped);
         builder.Register<PlayerInputSystemsFactory>(Lifetime.Scoped);
         builder.Register<ShootingSystemsFactory>(Lifetime.Scoped);
+        builder.Register<SpawnSystemsFactory>(Lifetime.Scoped);
         builder.Register<StrategySystemsFactory>(Lifetime.Scoped);
         builder.Register<StrategyTransitionSystemsFactory>(Lifetime.Scoped);
         builder.Register<TargetTrackingSystemsFactory>(Lifetime.Scoped);

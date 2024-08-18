@@ -9,8 +9,7 @@ public class ConfigBase : MonoBehaviour
     public GunConfig RifleConfig { get => _rifleConfig; }
     public GunConfig ShotgunConfig { get => _shotgunConfig; }
 
-    public GameObject HumanPrefab { get => _humanPrefab; }
-    public GameObject MonsterPrefab { get => _monsterPrefab; }
+    public List<GameObject> NpcPrefabs { get => _npcPrefabs; }
 
     [Header("Core")]
     [SerializeField] private CameraConfig _camConfig;
@@ -20,6 +19,5 @@ public class ConfigBase : MonoBehaviour
     [SerializeField] private GunConfig _shotgunConfig;
 
     [Header("Characters")]
-    [SerializeField] private GameObject _humanPrefab;
-    [SerializeField] private GameObject _monsterPrefab;
+    [SerializeField] private List<GameObject> _npcPrefabs;
 }
