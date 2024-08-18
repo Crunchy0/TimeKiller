@@ -12,7 +12,8 @@ GameObject:
   - component: {fileID: 7168501477107515573}
   - component: {fileID: 5187042327829334581}
   - component: {fileID: 7456826625415303932}
-  - component: {fileID: 7514995424660992219}
+  - component: {fileID: 8429040444776532346}
+  - component: {fileID: 6199967335720941599}
   m_Layer: 8
   m_Name: SpawnZone
   m_TagString: Untagged
@@ -106,7 +107,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &7514995424660992219
+--- !u!114 &8429040444776532346
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -115,9 +116,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 336928877761595273}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 238c4804a3df6bd479409a92b7a35210, type: 3}
+  m_Script: {fileID: 11500000, guid: 61f510e6496537046b0fb5e94eb72709, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _adjacentZones: []
-  _spawnInterval: 0
-  _ownerId: 0
+--- !u!114 &6199967335720941599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 336928877761595273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ced0c5bca6bcfd044b87544a05f8d14c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  serializedData:
+    zone: {fileID: 8429040444776532346}
+    ownerId: 1
+    lastSpawnTime: 0
+    spawnInterval: 2

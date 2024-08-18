@@ -16,8 +16,5 @@ public class RootLifetimeScope : LifetimeScope
         builder.RegisterInstance(contr);
 
         builder.RegisterComponent(_configBase);
-
-        builder.Register<HumanFactory>(Lifetime.Singleton);
-        builder.Register<MonsterFactory>(Lifetime.Singleton);
     }
 }

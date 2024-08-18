@@ -14,15 +14,16 @@ public class WorldInitializer
     [Inject] StrategySystemsFactory _stratFactory;
     [Inject] StrategyTransitionSystemsFactory _stratTransFactory;
     [Inject] TargetTrackingSystemsFactory _targTrackFactory;
+    [Inject] SpawnSystemsFactory _spawnFactory;
     [Inject] MiscSystemsFactory _miscFactory;
 
     public void Initialize()
     {
         var groupFactories = new List<ISystemsGroupFactory>
         {
-            _aiNavFactory, _camFactory, _attachFactory, _orientFactory,
-            _equipmentFactory, _inputFactory, _shootingFactory, _stratFactory,
-            _stratTransFactory, _targTrackFactory, _miscFactory
+            _inputFactory, _camFactory, _attachFactory, _spawnFactory,
+            _aiNavFactory, _targTrackFactory, _orientFactory, _stratFactory,
+            _stratTransFactory, _equipmentFactory, _shootingFactory, _miscFactory
         };
 
         for (int i = 0; i < groupFactories.Count; i++)
