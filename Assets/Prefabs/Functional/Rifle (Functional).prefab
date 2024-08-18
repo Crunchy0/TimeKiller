@@ -187,6 +187,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   serializedData:
     spawnPoint: {fileID: 5729735818480552191}
+    damage: 15
     bulletMarkPrefab: {fileID: 252254243357967028, guid: 131465a72e3b354439b91d96693074ac,
       type: 3}
 --- !u!114 &3932809754496199039

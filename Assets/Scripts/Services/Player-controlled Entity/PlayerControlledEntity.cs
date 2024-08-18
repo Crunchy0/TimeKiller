@@ -27,18 +27,10 @@ public class PlayerControlledEntity
         EntityProvider provider = null;
         bool def = gameObject == null || !gameObject.TryGetComponent(out provider);
 
-        if (def)
-        {
-            _defaultObject.transform.position = Object.transform.position;
-            if (World.Default.TryGetEntity(Id, out Entity e) && e.Has<PlayerComponent>())
-            {
-                e.RemoveComponent<PlayerComponent>();
-            }
-        }
-        else
-        {
+        if (!def)
             provider.Entity.AddComponent<PlayerComponent>();
-        }
+        else if (World.Default.TryGetEntity(Id, out Entity e) && !e.IsNullOrDisposed() && e.Has<PlayerComponent>())
+            e.RemoveComponent<PlayerComponent>();
 
         Object = def ? _defaultObject : gameObject;
         Id = def ? _defaultId : provider.Entity.ID;

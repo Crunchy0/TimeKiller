@@ -5,7 +5,7 @@ using UnityEngine;
 public class Zone : MonoBehaviour
 {
     public List<Zone> AdjacentZones { get => _adjacentZones; }
-    public int OverallPopulation { get; private set; } = 0;
+    public int OverallPopulation = 0;//{ get; private set; } = 0;
 
     [SerializeField] List<Zone> _adjacentZones;
     protected Dictionary<CharacterGroupId, int> _population = new();

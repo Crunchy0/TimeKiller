@@ -1,4 +1,5 @@
 using Scellecs.Morpeh;
+using Scellecs.Morpeh.Providers;
 using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
 
@@ -7,14 +8,16 @@ using Unity.IL2CPP.CompilerServices;
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 public sealed class BulletSpawnSystem : CustomUpdateSystem
 {
-    private Request<SpawnBulletRequest> _spawnBulletRequest;
+    Request<SpawnBulletRequest> _spawnBulletReq;
+    Request<TakeDamageRequest> _damageReq;
 
     public override void OnAwake() {
-        _spawnBulletRequest = World.GetRequest<SpawnBulletRequest>();
+        _spawnBulletReq = World.GetRequest<SpawnBulletRequest>();
+        _damageReq = World.GetRequest<TakeDamageRequest>();
     }
 
     public override void OnUpdate(float deltaTime) {
-        foreach(var req in _spawnBulletRequest.Consume())
+        foreach(var req in _spawnBulletReq.Consume())
         {
             Entity e;
             if (World.TryGetEntity(req.targetEntityId, out e) && e.Has<BulletSpawner>())
@@ -37,6 +40,12 @@ public sealed class BulletSpawnSystem : CustomUpdateSystem
             
             var gameObject = GameObject.Instantiate(bsComp.bulletMarkPrefab, hit.point + hit.normal*0.01f, rot);
             gameObject.transform.SetParent(hit.transform);
+
+            var provider = hit.transform.GetComponentInParent<EntityProvider>();
+            if (provider == null)
+                return;
+
+            _damageReq.Publish(new TakeDamageRequest { targetId = provider.Entity.ID, damage = bsComp.damage });
         }
     }
 }

@@ -9,6 +9,7 @@ public class WorldInitializer
     [Inject] CharacterAttachmentSystemsFactory _attachFactory;
     [Inject] CharacterOrientationSystemsFactory _orientFactory;
     [Inject] EquipmentSystemsFactory _equipmentFactory;
+    [Inject] HealthSystemsFactory _healthFactory;
     [Inject] PlayerInputSystemsFactory _inputFactory;
     [Inject] ShootingSystemsFactory _shootingFactory;
     [Inject] StrategySystemsFactory _stratFactory;
@@ -23,7 +24,8 @@ public class WorldInitializer
         {
             _inputFactory, _camFactory, _attachFactory, _spawnFactory,
             _aiNavFactory, _targTrackFactory, _orientFactory, _stratFactory,
-            _stratTransFactory, _equipmentFactory, _shootingFactory, _miscFactory
+            _stratTransFactory, _equipmentFactory, _shootingFactory, _healthFactory,
+            _miscFactory
         };
 
         for (int i = 0; i < groupFactories.Count; i++)
