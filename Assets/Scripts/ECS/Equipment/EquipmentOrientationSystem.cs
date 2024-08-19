@@ -19,7 +19,14 @@ public sealed class EquipmentOrientationSystem : CustomUpdateSystem
             var actorComp = e.GetComponent<ActorComponent>();
             var activeEqComp = e.GetComponent<ActiveEquipment>();
 
-            activeEqComp.gameObject.transform.LookAt(actorComp.lookTarget);
+            float distance = 50f;
+            Ray ray = new Ray(actorComp.eye.position, actorComp.eye.forward);
+            if(Physics.Raycast(ray, out var hit, distance, LayerMask.GetMask("Population")))
+            {
+                distance = (hit.point - actorComp.eye.position).magnitude;
+            }
+
+            activeEqComp.gameObject.transform.LookAt(ray.GetPoint(distance));
         }
     }
 }

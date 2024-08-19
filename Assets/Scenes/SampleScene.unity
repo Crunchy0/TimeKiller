@@ -514,7 +514,7 @@ PrefabInstance:
     - target: {fileID: 6199967335720941599, guid: c654676935f7a1d49af42c9141413bf2,
         type: 3}
       propertyPath: serializedData.spawnInterval
-      value: 4
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8429040444776532346, guid: c654676935f7a1d49af42c9141413bf2,
         type: 3}
