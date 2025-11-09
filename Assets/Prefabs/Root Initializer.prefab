@@ -66,5 +66,5 @@ MonoBehaviour:
   _rifleConfig: {fileID: 11400000, guid: 06316dec58a7cd34e8d697d6055d80e4, type: 2}
   _shotgunConfig: {fileID: 11400000, guid: 965d53693e879d44bb56e91b8ef23d80, type: 2}
   _npcPrefabs:
-  - {fileID: 7193201995071429587, guid: 85a05b5c8014ad345aacf587bf72b095, type: 3}
+  - {fileID: 5756552707662546765, guid: cb92a411b0e36fa428efb4ae64bca167, type: 3}
   - {fileID: 8087448856805712590, guid: bfb0a78d2e3ce56449b7acedf227edd6, type: 3}

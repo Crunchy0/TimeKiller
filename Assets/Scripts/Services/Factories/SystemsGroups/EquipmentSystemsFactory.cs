@@ -6,7 +6,7 @@ public class EquipmentSystemsFactory : ISystemsGroupFactory
     public SystemsGroup Create(World world)
     {
         List<ISystem> systems = new List<ISystem>{
-            new EquipmentOrientationSystem(),
+            //new EquipmentOrientationSystem(),
             new ApplyEquipmentPrimary()
         };
 

@@ -9,7 +9,10 @@ public class StrategySystemsFactory : ISystemsGroupFactory
         {
             new ExplorationSystem(),
             new PursueTargetSystem(),
-            new AttackTargetSystem(),
+            new TimeRangedAttackEnableSystem(),
+            new TimeRangedAttackDisableSystem(),
+            new AnimatedAttackEnableSystem(),
+            new AnimatedAttackDisableSystem()
         };
 
         var group = world.CreateSystemsGroup();

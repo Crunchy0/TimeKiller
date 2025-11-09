@@ -36,7 +36,7 @@ public sealed class ExplorationSystem : CustomUpdateSystem
                 continue;
 
             float exploreRand = Random.Range(0f, 1f);
-            bool stay = exploreRand > actor.config.ExplorationPenchant;
+            bool stay = exploreRand > explorer.explorationPenchant;
             explorer.targetZone = stay ? actor.currentZone : actor.currentZone.ChooseNextZone(actor.config.GroupId);
             agentPath.destination = explorer.targetZone.GetRandomPoint();
         }

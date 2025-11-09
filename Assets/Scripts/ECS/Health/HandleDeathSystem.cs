@@ -15,7 +15,7 @@ public sealed class HandleDeathSystem : CustomUpdateSystem {
     public override void OnAwake()
     {
         _agentFactory = World.GetAspectFactory<AgentAspect>();
-        _living = World.Filter.Extend<AgentAspect>().With<HealthComponent>().Build();
+        _living = World.Filter.With<HealthComponent>().Build();
     }
 
     public override void OnUpdate(float deltaTime)

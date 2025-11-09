@@ -7,7 +7,9 @@ public class ShootingSystemsFactory : ISystemsGroupFactory
     {
         List<ISystem> systems = new List<ISystem>
         {
+            new HandsAttackTriggerSystem(),
             new GunPullTriggerSystem(),
+            new HandsAttackSystem(),
             new GunShootingSystem(),
             new BulletSpawnSystem()
         };

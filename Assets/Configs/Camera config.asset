@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tiltAngle: 48.2
   _rotationAngle: 38.6
-  _distanceToTarget: 39.5
+  _distanceToTarget: 30
   _followThreshold: 0.1
   _baseSpeed: 0.3
   _acceleration: 3

@@ -25,6 +25,7 @@ public class LevelLifetimeScope : LifetimeScope
         builder.Register<NpcPrototypeStorage>(Lifetime.Scoped);
 
         builder.Register<AiNavigationSystemsFactory>(Lifetime.Scoped);
+        builder.Register<AnimationSystemsFactory>(Lifetime.Scoped);
         builder.Register<CameraSystemsFactory>(Lifetime.Scoped);
         builder.Register<CharacterAttachmentSystemsFactory>(Lifetime.Scoped);
         builder.Register<CharacterOrientationSystemsFactory>(Lifetime.Scoped);

@@ -33,15 +33,7 @@ public sealed class ToAttackerSystem : CustomUpdateSystem
 
             float distance = (mobileAgent.Body.transform.position - target.transform.position).magnitude;
             if (distance <= actor.config.AttackRange)
-            {
-                ref var attack = ref e.AddComponent<AttackTargetComponent>();
-                float curTime = Time.time;
-
-                attack.span = actor.config.AttackSpan;
-                attack.cooldown = actor.config.AttackCooldown;
-                attack.startTime = curTime - attack.span - attack.cooldown;
-                attack.stopTime = curTime - attack.cooldown;
-            }
+                e.AddComponent<AttackTargetComponent>();
         }
     }
 }

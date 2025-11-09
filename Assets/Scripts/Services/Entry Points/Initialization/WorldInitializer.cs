@@ -17,6 +17,7 @@ public class WorldInitializer
     [Inject] TargetTrackingSystemsFactory _targTrackFactory;
     [Inject] SpawnSystemsFactory _spawnFactory;
     [Inject] MiscSystemsFactory _miscFactory;
+    [Inject] AnimationSystemsFactory _animFactory;
 
     public void Initialize()
     {
@@ -25,7 +26,7 @@ public class WorldInitializer
             _inputFactory, _camFactory, _attachFactory, _spawnFactory,
             _aiNavFactory, _targTrackFactory, _orientFactory, _stratFactory,
             _stratTransFactory, _equipmentFactory, _shootingFactory, _healthFactory,
-            _miscFactory
+            _miscFactory, _animFactory
         };
 
         for (int i = 0; i < groupFactories.Count; i++)

@@ -23,6 +23,7 @@ public sealed class PrepareControlledNpcSystem : CustomUpdateSystem {
         if (!World.TryGetEntity(evt.controlledId, out Entity e) || e.IsNullOrDisposed())
             return;
 
+        // If character is attacking, reset attack
         if (e.Has<AttackTargetComponent>())
             _primEvt.NextFrame(new PrimaryActionEvent { actorId = e.ID, activated = false });
     }

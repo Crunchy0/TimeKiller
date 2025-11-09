@@ -35,10 +35,6 @@ public sealed class FromAttackerSystem : CustomUpdateSystem
                 if (distance <= mobileAgent.Actor.config.AttackRange)
                     continue;
             }
-
-            var attack = e.GetComponent<AttackTargetComponent>();
-            if (attack.startTime > attack.stopTime)
-                _primEvt.NextFrame(new PrimaryActionEvent { actorId = e.ID, activated = false });
             e.RemoveComponent<AttackTargetComponent>();
         }
     }

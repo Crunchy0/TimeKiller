@@ -1,4 +1,5 @@
 using Scellecs.Morpeh;
+using UnityEngine;
 using Unity.IL2CPP.CompilerServices;
 
 [Il2CppSetOption(Option.NullChecks, false)]
@@ -29,6 +30,8 @@ public sealed class ApplyEquipmentPrimary : CustomUpdateSystem {
         if (World.TryGetEntity(activeEq.equippedId, out e) && e.Has<Equipment>())
         {
             var eqComp = e.GetComponent<Equipment>();
+            // Invoke primary action start/stop of this piece of equipment
+            Debug.Log($"Trying to use {eqComp}");
             if (evt.activated)
                 eqComp.main(World);
             else

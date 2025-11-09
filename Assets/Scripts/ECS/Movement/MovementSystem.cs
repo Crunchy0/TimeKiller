@@ -7,7 +7,8 @@ using Unity.IL2CPP.CompilerServices;
 [Il2CppSetOption(Option.DivideByZeroChecks, false)]
 public sealed class MovementSystem : CustomFixedUpdateSystem
 {
-    private Filter _movementFilter;
+    Filter _movementFilter;
+    Vector3 _dir = default;
 
     public override void OnAwake() {
         _movementFilter = World.Filter.With<BodyComponent>().With<MovementComponent>().Build();
@@ -17,14 +18,13 @@ public sealed class MovementSystem : CustomFixedUpdateSystem
         foreach(Entity e in _movementFilter)
         {
             var movComp = e.GetComponent<MovementComponent>();
-            float x = movComp.direction.x;
-            float z = movComp.direction.y;
-            Vector3 dir = new Vector3(x, 0f, z) * movComp.speed * deltaTime;
+            _dir.x = movComp.direction.x;
+            _dir.z = movComp.direction.y;
 
-            var bodyComp = e.GetComponent<BodyComponent>();
-            if (bodyComp.rigidbody.velocity.magnitude < movComp.speed)
-                bodyComp.rigidbody.AddForce(dir, ForceMode.VelocityChange);
-
+            var body = e.GetComponent<BodyComponent>();
+            Vector3 force = _dir * movComp.speed * deltaTime;
+            if (body.rigidbody.velocity.magnitude < movComp.speed)
+                body.rigidbody.AddForce(force, ForceMode.VelocityChange);
             //Debug.Log($"Movement direction ({bodyComp.transform.name}): {movComp.direction}");
         }
     }

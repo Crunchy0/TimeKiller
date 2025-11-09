@@ -32,6 +32,8 @@ public sealed class NpcOrientationSystem : CustomUpdateSystem
             float resultSpeed = (angle > 0 ? 1 : -1) * baseSpeed + angle * acceleration;
             _eulers.y = resultSpeed;
             bodyComp.transform.Rotate(_eulers);
+
+            Debug.DrawLine(eye.position, actorComp.lookTarget, Color.green);
         }
     }
 }

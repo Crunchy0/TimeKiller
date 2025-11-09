@@ -13,12 +13,6 @@ MonoBehaviour:
   m_Name: Monster Config
   m_EditorClassIdentifier: 
   _groupId: 2
-  _maxHp: 70
-  _regeneration: 0
-  _movementSpeed: 8
   _baseAngularSpeed: 0.5
   _angularAcceleration: 1.5
-  _explorationPenchant: 0.55
-  _attackRange: 10
-  _attackSpan: 1
-  _attackCooldown: 1
+  _attackRange: 3

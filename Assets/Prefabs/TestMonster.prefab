@@ -477,4 +477,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   serializedData:
+    explorationPenchant: 0.5
     targetZone: {fileID: 0}

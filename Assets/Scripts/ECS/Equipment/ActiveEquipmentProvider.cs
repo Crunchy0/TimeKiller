@@ -16,8 +16,36 @@ public sealed class ActiveEquipmentProvider : EntityProvider {
             return;
 
         ref var activeEq = ref Entity.AddComponent<ActiveEquipment>();
-        var gameObject = Instantiate(_equipmentPrefab, _equipmentLocation.position, Quaternion.identity, _equipmentLocation);
+        var gameObject = Instantiate(_equipmentPrefab, _equipmentLocation.position, _equipmentLocation.rotation, _equipmentLocation);
         activeEq.gameObject = gameObject;
         activeEq.equippedId = gameObject.GetComponent<EntityProvider>().Entity.ID;
+    }
+
+    // (animation <-> logic) attack signals
+    private void UseEquipment(int code)
+    {
+        bool activated = false;
+        switch (code)
+        {
+            case 0:
+                break;
+            case 1:
+                activated = true;
+                break;
+            default:
+                return;
+        }
+
+        SendUseEvent(activated);
+    }
+
+    private void SendUseEvent(bool activated)
+    {
+        var useEvt = World.Default.GetEvent<PrimaryActionEvent>();
+        useEvt.NextFrame(new PrimaryActionEvent
+        {
+            actorId = Entity.ID,
+            activated = activated
+        });
     }
 }
